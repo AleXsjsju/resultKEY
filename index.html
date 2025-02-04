@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+        }
+        h1 {
+            animation: pulseText 6s infinite alternate ease-in-out;
+        }
+        p {
+            animation: fadeSlide 6s infinite alternate ease-in-out;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #252525;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            animation: floatButton 3s infinite alternate ease-in-out, glow 1.5s infinite alternate;
+        }
+        .button:hover {
+            background-color: #333;
+            transform: scale(1.2) rotate(3deg);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .button:active {
+            background-color: #444;
+            transform: scale(0.9) rotate(-3deg);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: gray;
+        }
+        .floating-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 5s infinite alternate ease-in-out;
+        }
+        @keyframes fadeSlide {
+            from { transform: translateY(0px); opacity: 1; }
+            to { transform: translateY(15px); opacity: 0.8; }
+        }
+        @keyframes floatButton {
+            from { transform: translateY(0px); }
+            to { transform: translateY(15px); }
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+            to { box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+        }
+        @keyframes float {
+            from { transform: translateY(0px); }
+            to { transform: translateY(20px); }
+        }
+        @keyframes clickEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.querySelector(".floating-dots");
+            for (let i = 0; i < 20; i++) {
+                let dot = document.createElement("div");
+                dot.classList.add("dot");
+                dot.style.left = Math.random() * 100 + "%";
+                dot.style.top = Math.random() * 100 + "%";
+                dot.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                container.appendChild(dot);
+            }
+
+            const button = document.querySelector(".button");
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                button.style.animation = "clickEffect 0.5s ease";
+                setTimeout(() => {
+                    window.location.href = button.href;
+                }, 500);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="floating-dots"></div>
+    <h1>The key is: McVAUvUb</h1>
+    </p>
+    <div class="footer">
+        <p>&copy; 2025 All rights reserved. This site is protected by copyright.</p>
+    </div>
+</body>
+</html>
